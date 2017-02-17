@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+//        \Auth::check();
     }
 
     /**
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        $user = \Auth::user();
+//        $user = $request->user();
+        
         return view('home');
     }
 }
