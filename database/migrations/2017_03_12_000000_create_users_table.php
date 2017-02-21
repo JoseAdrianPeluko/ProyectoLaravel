@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration {
             $table->increments('id');
             //     $table->dropForeign('role_id'); 
             $table->integer('role_id')->unsigned();
-//            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->string('name');
 //            $table->string('lastname');
             $table->string('email')->unique();
@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration {
             $table->rememberToken();
             $table->timestamps();
         });
+//        2014_10_12_000000_create_users_table
     }
     
     /**

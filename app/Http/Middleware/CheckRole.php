@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckRole
-{
+class CheckRole {
+
     /**
      * Handle an incoming request.
      *
@@ -13,27 +13,17 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        
-        switch($request->route('role'))
-        {
-            case "trabajador": {
-                    echo 'view trabajador';
-                    break;
-            }
-            case "admin": {
-                    echo 'view admin';
-                    break;
-            }
-            
+    public function handle($request, Closure $next) {
+        //solo chequear si existe
+//        $request->route('role')
+//    
+        $user = $request->user();
+
+        if ($user->role->role = "admin" || $user->role->role = "trabajador") {
+            return $next($request);
+        } else {
+            return redirect()->route('index');
         }
-        
-//         if ( $request->user()->email="joseadrianpeluko@gmail.com") {
-//             
-//        }
-       
-        
-        return $next($request);
     }
+
 }

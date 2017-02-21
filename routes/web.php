@@ -13,12 +13,33 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("index");
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/{role}', function () {
+//Route::get('/{role}', function () {
+//    //mandarle la vista dependiendo de lo que recibo
+//})->middleware("auth","role");
+
+Route::group(['middleware' => ['role'],'prefix' => 'admin'], function () {
     
-})->middleware("auth","role");
+    Route::resource('admin', 'AdminController', ['except' => [
+    'create', 'store', 'update', 'destroy'
+]]);
+    
+    Route::resource('empleado', 'EmpleadoController', ['except' => [
+    'create', 'store', 'update', 'destroy'
+]]);
+    
+//    Route::resource('admin', 'AdminController');
+    
+//    Route::resource('photo', 'PhotoController', ['only' => [
+//    'index', 'show'
+//]]);
+//
+//Route::resource('camarero', 'camareroController', ['except' => [
+//    'create', 'store', 'update', 'destroy'
+//]]);
+});

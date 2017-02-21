@@ -16,7 +16,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
     $faker = Faker\Factory::create("es_ES");
     return [
-        'role_id' => factory(App\Role::class)->create()->id,
+        'role_id' => $faker->randomElement([1, 2,3]),
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
@@ -26,7 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Role::class, function (Faker\Generator $faker) {
 
     return [
-        'roles' => $faker->randomElement(['trabajador', 'admin', 'usuario']),
+        'role' => $faker->randomElement(['empleado', 'admin', 'cliente']),
     ];
 });
 

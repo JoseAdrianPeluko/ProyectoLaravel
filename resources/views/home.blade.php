@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    PERSONALIZARLO COMO EL PERFIL DEL USUARIO
                 </div>
             </div>
         </div>
