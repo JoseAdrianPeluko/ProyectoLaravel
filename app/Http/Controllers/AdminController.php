@@ -19,7 +19,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        echo "pagina index admin";
+        return view("admin.index");
     }
 
     /**
