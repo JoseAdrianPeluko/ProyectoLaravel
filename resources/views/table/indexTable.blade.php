@@ -1,24 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!--
-<aside class="col-sm-3 sidenav hidden-xs">
-  
-    
-      <h2>Categorias</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Ofertas</a></li>
-        <li><a href="#section2">Lunes</a></li>
-        <li><a href="#section3">Martes</a></li>
-        <li><a href="#section3">Miercoles</a></li>
-        <li><a href="#section3">Jueves</a></li>
-        <li><a href="#section3">Viernes</a></li>
-        <li><a href="#section3">Fines</a></li>
-      </ul><br>
-   
-    <br>
-    </aside>-->
-
 <table class="table table-responsive table-bordered table-striped">
                     <thead>
                         <tr>
@@ -49,6 +31,4 @@
                         </tr>
                     </tbody>
                 </table>
-
-
 @endsection

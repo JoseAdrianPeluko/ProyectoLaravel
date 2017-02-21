@@ -46,15 +46,19 @@ echo json_encode([
                         <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-nav">
                             &nbsp;
-                            @if (\Auth::user()->hasRole("admin"))
+                            
+                            @if (Auth::check() && Auth::user()->role->role=="admin")
                             <li><a href="#">Users</a></li>
-                            <li><a href="#">Tables</a></li>
+                            <li><a href="/admin/table">Tables</a></li>
                             <li><a href="#">Products</a></li>
+                            <li><a href="#">Orders</a></li>
                             @endif
+                            @if(Auth::check() && Auth::user()->role->role=="empleado")
+                            <li><a href="#">Orders</a></li>
+                            @endif
+                            
 
                         </ul>
-
-
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Authentication Links -->

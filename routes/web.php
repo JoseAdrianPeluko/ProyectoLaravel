@@ -17,19 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
 //Route::get('/{role}', function () {
 //    //mandarle la vista dependiendo de lo que recibo
 //})->middleware("auth","role");
 
-Route::group(['middleware' => ['role'],'prefix' => 'admin'], function () {
+Route::group(['middleware' => 'role','prefix' => 'admin'], function () {
     
-    Route::resource('admin', 'AdminController', ['except' => [
+    Route::resource('table', 'TableController', ['except' => [
     'create', 'store', 'update', 'destroy'
 ]]);
     
-    Route::resource('empleado', 'EmpleadoController', ['except' => [
+    Route::resource('order', 'OrderController', ['except' => [
     'create', 'store', 'update', 'destroy'
 ]]);
     

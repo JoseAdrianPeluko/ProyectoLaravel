@@ -4,14 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class TableController extends Controller
 {
-    
-    public function __construct()
-    {
-        $this->middleware('auth');
-//        \Auth::check();
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view("admin.index");
+        return view("table.indexTable");
     }
 
     /**
@@ -51,7 +45,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        // Lista de...
+        //
     }
 
     /**

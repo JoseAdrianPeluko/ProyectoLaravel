@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/resources/views/layouts/app.blade.php</file>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/User.php</file>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/Http/Controllers/HomeController.php</file>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/resources/views/admin/index.blade.php</file>
             <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/resources/views/welcome.blade.php</file>
             <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/routes/web.php</file>
-            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/database/migrations/2017_03_12_000000_create_users_table.php</file>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/Http/Controllers/AdminController.php</file>
         </group>
     </open-files>
 </project-private>

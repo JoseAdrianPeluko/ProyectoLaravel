@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EmpleadoController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        echo "vista del empleado";
+        
     }
 
     /**

@@ -24,7 +24,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -42,5 +42,8 @@ use AuthenticatesUsers;
 //    protected function guard() {
 //        return Auth::guard('guard-name');
 //    }
-
+//$user = \Auth::user();
+//        $user = $request->user();
+//        dd(\Auth::user()->role->role);
+//    \Auth::check();
 }
