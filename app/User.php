@@ -31,12 +31,12 @@ class User extends Authenticatable
         
         return $this->belongsTo('App\Role');
     }
-    
-    public function hasRole($check)
+    public function table()
     {
-         if (\Auth::user()->role->role=$check){
-             return true;
-         };
-         return false;
-   }
+        
+        return $this->belongsTo('App\Table');
+    }
+    
+    
+    
 }

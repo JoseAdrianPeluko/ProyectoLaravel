@@ -23,7 +23,7 @@ class TableController extends Controller
      */
     public function create()
     {
-        //
+       echo " vista creando";
     }
 
     /**
@@ -34,7 +34,7 @@ class TableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Guardar
     }
 
     /**
@@ -56,7 +56,7 @@ class TableController extends Controller
      */
     public function edit($id)
     {
-        //
+        echo "editando";
     }
 
     /**
