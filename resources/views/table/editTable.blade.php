@@ -10,7 +10,8 @@
                 <h4 class="modal-title">Titulo variable</h4>
             </div>
             <div class="modal-body">
-                {{ Form::model(['route' => 'table.update','method' => 'put']) }}
+                {{ Form::model($table, ['route' => ['table.update', $table->id],'method' => 'put']
+                        ) }}
                 <div class="form-group">
                 {{ Form::label('plazas', 'Nº de plazas que dispone la mesa ') }}
                 {{Form::selectRange('plazas', 2, 8)}}

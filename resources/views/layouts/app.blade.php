@@ -13,10 +13,16 @@
         <!-- Styles -->
         <link href="/css/app.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+        crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
         <!-- Scripts -->
         <script>
-            window.Laravel = <?php
+window.Laravel = <?php
 echo json_encode([
     'csrfToken' => csrf_token(),
 ]);
@@ -47,7 +53,7 @@ echo json_encode([
                         <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-nav">
                             &nbsp;
-                            
+
                             @if (Auth::check() && Auth::user()->role->role=="admin")
                             <li><a href="#">Users</a></li>
                             <li><a href="/admin/table">Tables</a></li>
@@ -57,7 +63,7 @@ echo json_encode([
                             @if(Auth::check() && Auth::user()->role->role=="empleado")
                             <li><a href="#">Orders</a></li>
                             @endif
-                            
+
 
                         </ul>
                         <!-- Right Side Of Navbar -->
@@ -103,6 +109,7 @@ echo json_encode([
                 <button type="button" class="btn btn-danger">Sign Up</button>
             </form>
         </footer>
+        @yield('scripts')
         <!-- Scripts -->
         <script src="/js/app.js"></script>
     </body>

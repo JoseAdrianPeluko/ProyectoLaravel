@@ -18,6 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'role_id' => $faker->randomElement([1, 2, 3]),
         'table_id' => $faker->randomElement([$faker->numberBetween(1, 10), null]),
+        //meter el id order que es un random
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
@@ -37,4 +38,18 @@ $factory->define(App\Table::class, function (Faker\Generator $faker) {
         'reservado' => $faker->randomElement([true, false]),
     ];
 });
+//$factory->define(App\Order::class, function (Faker\Generator $faker) {
+//
+//    return [
+//        'plazas' => $faker->numberBetween(2, 8),
+//        'reservado' => $faker->randomElement([true, false]),
+//    ];
+//});
+//$factory->define(App\Product::class, function (Faker\Generator $faker) {
+//
+//    return [
+//        'plazas' => $faker->numberBetween(2, 8),
+//        'reservado' => $faker->randomElement([true, false]),
+//    ];
+//});
 
