@@ -34,7 +34,9 @@ class User extends Authenticatable
     public function table()
     {
         
-        return $this->belongsTo('App\Table');
+//        return $this->belongsTo('App\Table');
+               return $this->hasOne('App\Table');
+
     }
     
     

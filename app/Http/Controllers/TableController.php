@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TableController extends Controller
-{
+class TableController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view("table.indexTable");
+    public function index() {
+
+//        $tables = \DB::Table('tables')->paginate(5);
+        $tables = \App\Table::paginate(5);
+
+//          dd($tables);
+
+
+        return view("table.indexTable", compact("tables"));
     }
 
     /**
@@ -21,9 +27,8 @@ class TableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-       echo " vista creando";
+    public function create() {
+        //sustituido por modal
     }
 
     /**
@@ -32,9 +37,13 @@ class TableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //Guardar
+    public function store(Request $request) {
+
+        $table = new \App\Table();
+        $table->plazas = $request['plazas'];
+        empty($request->reservado) ? $table->reservado = 0 : $table->reservado = $request['reservado'];
+        $table->save();
+        return redirect()->route("table.index");
     }
 
     /**
@@ -43,8 +52,7 @@ class TableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -54,9 +62,10 @@ class TableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        echo "editando";
+    public function edit($id) {
+        $table = \App\Table::find($id);
+
+        return view("table.editTable", compact("table"));
     }
 
     /**
@@ -66,9 +75,20 @@ class TableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+//        $table;
+//        if ($table =\App\Table::find($id)){
+//            
+//        } else {
+//             $table = new \App\Table();
+//        }
+        dd($request);
+        $table = \App\Table::find($id);
+
+        $table->plazas = $request['plazas'];
+        empty($request->reservado) ? $table->reservado = 0 : $table->reservado = 1;
+        $table->save();
+        return redirect()->route("table.index");
     }
 
     /**
@@ -77,8 +97,13 @@ class TableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+
+        $flight = \App\Table::find($id);
+
+        $flight->delete();
+
+        return redirect()->route("table.index");
     }
+
 }

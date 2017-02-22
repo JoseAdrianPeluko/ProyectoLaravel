@@ -23,9 +23,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'role','prefix' => 'admin'], function () {
     
-    Route::resource('table', 'TableController', ['except' => [
-     'store', 'update', 'destroy'
-]]);
+    Route::resource('table', 'TableController');
     
     Route::resource('order', 'OrderController', ['except' => [
     'create', 'store', 'update', 'destroy'
