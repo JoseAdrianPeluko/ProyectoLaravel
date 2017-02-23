@@ -64,7 +64,7 @@ echo json_encode([
                             <li><a href="#">Orders</a></li>
                             @endif
                             <li><a href="#" class="glyphicon glyphicon-shopping-cart"> <span class="badge">4</span></a></li>
-                            
+
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
@@ -81,11 +81,16 @@ echo json_encode([
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        @if (!Auth::user()->table_id)
-                                        
-                                        <a href="{{ route("table.create")}}" class="glyphicon glyphicon-king"> Reservar Mesa</a>
+                                        @if ( Auth::user()->order_id )
+
+                                        @if ( Auth::user()->order_table )
+
+                                        @else
+                                        <a href="{{ route("table.cre                                        ate")}}" class="glyphicon glyphicon-king"> Reservar Mesa</a>
+
+                                        <a href="{{ route("home",Auth::user()->order_id) }}" class="glyphicon glyphicon-home"> A Domicilio</a>
                                         @endif
-                                        <a href="{{ route("table.edit",Auth::user()->id) }}" class="glyphicon glyphicon-home"> A Domicilio</a>
+                                        @endif
                                         <a href="{{ url('/logout') }}" class="glyphicon glyphicon-off"
                                            onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">

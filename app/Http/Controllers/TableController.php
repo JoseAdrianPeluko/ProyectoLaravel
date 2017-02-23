@@ -30,10 +30,13 @@ class TableController extends Controller {
     public function create() {
         //reservar mesa vista
 
+        if( \Auth::user()->table_id){
+            return redirect()->route("index");
+        }
+        
         $tables = \App\Table::all();
 
-
-
+        
         return view("table.tables", compact("tables"));
     }
 

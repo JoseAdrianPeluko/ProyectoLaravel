@@ -10,17 +10,18 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
+
 Auth::routes();
+
 Route::get('/{scope?}', function ($scope = "") {
-   
+
     $products = \App\Product::orderBy("categoria")->get();
-     $categorias = $products->groupBy("categoria");
+    $categorias = $products->groupBy("categoria");
     if ($scope) {
         $products = \App\Product::where('categoria', $scope)->get();
     }
 
     return view('welcome', compact("categorias", "products"));
-    
 })->name("index");
 
 
@@ -32,10 +33,16 @@ Route::get('/{scope?}', function ($scope = "") {
 Route::group(['middleware' => 'role', 'prefix' => 'admin'], function () {
 
     Route::resource('table', 'TableController');
+//    Route::get('order/home', 'OrderController@home');
 
     Route::resource('order', 'OrderController', ['except' => [
             'create', 'store', 'update', 'destroy'
     ]]);
+
+    Route::get('/home/home/{$id}', function ($id) {
+
+        echo " domicilio";
+    })->name("home");
 
 //    Route::resource('admin', 'AdminController');
 //    Route::resource('photo', 'PhotoController', ['only' => [
