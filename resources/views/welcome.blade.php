@@ -169,30 +169,37 @@
     </aside>-->
 
 <article class="container-fluid">
-  
+
     <aside class="col-sm-3 sidenav hidden-xs">
-      <h2>Categorias</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Ofertas</a></li>
-        <li><a href="#section2">Lunes</a></li>
-        <li><a href="#section3">Martes</a></li>
-        <li><a href="#section3">Miercoles</a></li>
-        <li><a href="#section3">Jueves</a></li>
-        <li><a href="#section3">Viernes</a></li>
-        <li><a href="#section3">Fines</a></li>
-      </ul><br>
+        <h2>Categorias</h2>
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="/">Todas</a></li>
+            @foreach( $categorias as $categoria )
+
+            <li><a href="{{route("index",$categoria[0]["categoria"])}}">{{$categoria[0]["categoria"]}}</a></li>
+
+            @endforeach
+        </ul><br>
     </aside>
-    
-    
-   <!--for para cargar los col-->
-    <div class="col-sm-3">
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
+
+
+    <!--for para cargar los col-->
+    @foreach( $products as $product )
+
+
+
+
+    <div class="col-sm-3 text-center text-uppercase">
+        <div class="panel panel-info">
+            <div class="panel-heading">{{$product->name}}</div>
+            <div class="panel-body">
+                <img src="{{$product->foto}}" 
+                     class="img-responsive" style=" height: 150px;width:100% " alt="Image"></div>
+            <div class="panel-footer text-warning">{{$product->pvp}}€</div>
+        </div>
     </div>
-  
+    
+    @endforeach
 </article>
 
 

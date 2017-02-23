@@ -43,7 +43,7 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
     return [
         'product_id' => $faker->numberBetween(1, 30),
         'cantidad' => $faker->numberBetween(1, 5),
-        'estado' => $faker->randomElement(['pagado','preparando','listo','enviado']),
+        'estado' => $faker->randomElement(['pagado', 'preparando', 'listo', 'enviado']),
     ];
 });
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
@@ -51,7 +51,13 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'categoria' => $faker->randomElement(['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'fines', 'ofertas']),
-        'pvp' => $faker->numberBetween(1,100),
+        'pvp' => $faker->numberBetween(1, 100),
+        'foto' => $faker->randomElement(['http://www.alsuper.com/img/productos-importados-interna01.jpg',
+            'http://www.arcacontal.com/media/1661/hm_productos.png',
+            'https://www.theinsiders.eu/site/public/images/pl_1//67/201402/103055_27022014_610_siteheader.jpg', 
+            'https://www.coviran.es/productos/PublishingImages/productoscoviran_marcapropia.png',
+            'http://www.catalogonatura.com.ar/wp-content/uploads/2016/03/productos-natura.jpg'
+            ]),
     ];
 });
 

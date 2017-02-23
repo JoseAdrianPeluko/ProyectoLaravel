@@ -63,8 +63,8 @@ echo json_encode([
                             @if(Auth::check() && Auth::user()->role->role=="empleado")
                             <li><a href="#">Orders</a></li>
                             @endif
-
-
+                            <li><a href="#" class="glyphicon glyphicon-shopping-cart"> <span class="badge">4</span></a></li>
+                            
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
@@ -78,9 +78,14 @@ echo json_encode([
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
+
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/home') }}" class="glyphicon glyphicon-home"> Home</a>
+                                        @if (!Auth::user()->table_id)
+                                        
+                                        <a href="{{ route("table.create")}}" class="glyphicon glyphicon-king"> Reservar Mesa</a>
+                                        @endif
+                                        <a href="{{ route("table.edit",Auth::user()->id) }}" class="glyphicon glyphicon-home"> A Domicilio</a>
                                         <a href="{{ url('/logout') }}" class="glyphicon glyphicon-off"
                                            onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
@@ -95,6 +100,9 @@ echo json_encode([
                                 </ul>
                             </li>
                             @endif
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -102,7 +110,7 @@ echo json_encode([
 
             @yield('content')
         </div>
-        <footer class="container-fluid text-center">
+        <footer class="container-fluid text-center col-sm-12">
             <p>Online Store Copyright</p>  
             <form class="form-inline">Get deals:
                 <input type="email" class="form-control" size="50" placeholder="Email Address">

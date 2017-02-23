@@ -13,8 +13,8 @@ class TableController extends Controller {
      */
     public function index() {
 
-        $tables = \DB::Table('tables')->paginate(5);
-//        $tables = \App\Table::paginate(5);
+//        $tables = \DB::Table('tables')->paginate(5);
+        $tables = \App\Table::paginate(5);
 
 //          dd($tables);
 
@@ -28,7 +28,13 @@ class TableController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //sustituido por modal
+        //reservar mesa vista
+
+        $tables = \App\Table::all();
+
+
+
+        return view("table.tables", compact("tables"));
     }
 
     /**
@@ -37,13 +43,8 @@ class TableController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-
-        $table = new \App\Table();
-        $table->plazas = $request['plazas'];
-        empty($request->reservado) ? $table->reservado = 0 : $table->reservado = $request['reservado'];
-        $table->save();
-        return redirect()->route("table.index");
+    public function store() {
+        //
     }
 
     /**
@@ -53,7 +54,16 @@ class TableController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+//        \Auth()->user()->table_id = $id;
+        $user = \Auth::user();
+        $user->table_id = $id;
+        $user->save();
+
+        $table = \App\Table::find($id);
+        $table->reservado = true;
+
+        $table->save();
+        return redirect()->route("index");
     }
 
     /**
@@ -63,11 +73,7 @@ class TableController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //recibo el ide desde la vista
-//        <a href="{{ route('admin.users.edit', $user) }}">Editar</a>
-        $table = \App\Table::find($id);
-
-        return view("table.editTable", compact("table"));
+        return view("table.domicilio");
     }
 
     /**
@@ -79,12 +85,12 @@ class TableController extends Controller {
      */
     public function update(Request $request, $id) {
         $table;
-        if ($table =\App\Table::find($id)){
+        if ($table = \App\Table::find($id)) {
             
         } else {
-             $table = new \App\Table();
+            $table = new \App\Table();
         }
-        
+
         $table->plazas = $request['plazas'];
         empty($request->reservado) ? $table->reservado = 0 : $table->reservado = 1;
         $table->save();

@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration {
             $table->string('name');
             $table->enum('categoria', ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'fines', 'ofertas']);
             $table->integer('pvp');
+            $table->string('foto');
         });
     }
 
