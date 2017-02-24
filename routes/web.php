@@ -20,7 +20,10 @@ Route::get('/{scope?}', function ($scope = "") {
     if ($scope) {
         $products = \App\Product::where('categoria', $scope)->get();
     }
-
+    
+//    dd(Auth::user()->order->cantidad);
+// dd(\App\User::find(Auth::user()->order_id)->order());
+// dd(Auth::user()->order());
     return view('welcome', compact("categorias", "products"));
 })->name("index");
 
@@ -33,11 +36,11 @@ Route::get('/{scope?}', function ($scope = "") {
 Route::group(['middleware' => 'role', 'prefix' => 'admin'], function () {
 
     Route::resource('table', 'TableController');
-//    Route::get('order/home', 'OrderController@home');
+    Route::get('order/home{id}', 'OrderController@home')->name("order.home");
 
     Route::resource('order', 'OrderController');
 
-    
+
 //    Route::resource('admin', 'AdminController');
 //    Route::resource('photo', 'PhotoController', ['only' => [
 //    'index', 'show'

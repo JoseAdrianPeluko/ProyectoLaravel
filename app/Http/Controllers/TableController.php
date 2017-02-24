@@ -30,7 +30,7 @@ class TableController extends Controller {
     public function create() {
         //reservar mesa vista
 
-        if( \Auth::user()->table_id){
+        if( \Auth::user()->table){
             return redirect()->route("index");
         }
         
@@ -58,6 +58,7 @@ class TableController extends Controller {
      */
     public function show($id) {
 //        \Auth()->user()->table_id = $id;
+        
         $user = \Auth::user();
         $user->table_id = $id;
         $user->save();

@@ -15,12 +15,8 @@ class CreateUsersTable extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             //     $table->dropForeign('role_id'); 
-            $table->integer('role_id')->unsigned();
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->integer('table_id')->unsigned()->nullable();
-            $table->foreign('table_id')->references('id')->on('tables')->onDelete('set null');
-            $table->integer('order_id')->unsigned()->nullable();
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('set null');
+            $table->enum('role', ['admin', 'empleado', 'cliente']);
+
             $table->string('name');
 //            $table->string('lastname');
             $table->string('email')->unique();
@@ -34,13 +30,14 @@ class CreateUsersTable extends Migration {
         });
 //        2014_10_12_000000_create_users_table
     }
-    
+
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down() { 
+    public function down() {
         Schema::dropIfExists('users');
     }
+
 }

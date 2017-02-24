@@ -5,8 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     use Notifiable;
 
     /**
@@ -26,19 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function role()
-    {
-        
-        return $this->belongsTo('App\Role');
-    }
-    public function table()
-    {
-        
-//        return $this->belongsTo('App\Table');
-               return $this->hasOne('App\Table');
 
+    public function table() {
+
+//        return $this->belongsTo('App\Table');
+        return $this->hasOne('App\Table');
     }
-    
-    
-    
+
+    public function order() {
+
+//        return $this->belongsTo('App\Table');
+        return $this->hasOne('App\Order');
+    }
+
 }

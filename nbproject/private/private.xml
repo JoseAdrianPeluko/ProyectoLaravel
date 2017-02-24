@@ -5,13 +5,12 @@
         <group>
             <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/resources/views/layouts/app.blade.php</file>
             <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/User.php</file>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/Order.php</file>
             <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/Http/Controllers/TableController.php</file>
-            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/database/seeds/UsersTableSeeder.php</file>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/resources/views/order/indexOrders.blade.php</file>
             <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/database/factories/ModelFactory.php</file>
-            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/resources/views/welcome.blade.php</file>
             <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/routes/web.php</file>
-            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/database/migrations/2017_03_12_000000_create_users_table.php</file>
+            <file>file:/opt/lampp/htdocs/PHP/ProyectoLaravel/app/Http/Controllers/OrderController.php</file>
         </group>
     </open-files>
 </project-private>

@@ -54,13 +54,13 @@ echo json_encode([
                         <ul class="nav navbar-nav">
                             &nbsp;
 
-                            @if (Auth::check() && Auth::user()->role->role=="admin")
+                            @if (Auth::check() && Auth::user()->role=="admin")
                             <li><a href="#">Users</a></li>
                             <li><a href="/admin/table">Tables</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">Orders</a></li>
+                            <li><a href="admin/product">Products</a></li>
+                            <li><a href="/admin/order">Orders</a></li>
                             @endif
-                            @if(Auth::check() && Auth::user()->role->role=="empleado")
+                            @if(Auth::check() && Auth::user()->role=="empleado")
                             <li><a href="/admin/order">Orders</a></li>
                             @endif
                             <li><a href="#" class="glyphicon glyphicon-shopping-cart"> <span class="badge">4</span></a></li>
@@ -81,15 +81,17 @@ echo json_encode([
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        @if ( Auth::user()->order_id )
+                                        @if ( Auth::user()->order!=null  )
 
-                                        @if ( Auth::user()->table_id )
-
-                                        @else
+                                        @if ( Auth::user()->table==null && Auth::user()->order->enviar==0   )
                                         <a href="{{ route("table.create")}}" class="glyphicon glyphicon-king"> Reservar Mesa</a>
 
-                                        <a href="{{ route("home",Auth::user()->order_id) }}" class="glyphicon glyphicon-home"> A Domicilio</a>
+                                        <a href="{{ route("order.home",Auth::user()->order->id) }}" class="glyphicon glyphicon-home"> A Domicilio</a>
+                                        @else
+
+
                                         @endif
+
                                         @endif
                                         <a href="{{ url('/logout') }}" class="glyphicon glyphicon-off"
                                            onclick="event.preventDefault();

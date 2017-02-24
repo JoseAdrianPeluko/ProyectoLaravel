@@ -19,7 +19,7 @@ class CheckRole {
 //    
         $user = $request->user();
 
-        if ($user->role->role == "admin" || $user->role->role == "empleado") {
+        if ($user->role == "admin" || $user->role == "empleado") {
             return $next($request);
         } else {
             return redirect()->route('index');

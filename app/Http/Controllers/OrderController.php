@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
-{
+class OrderController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view("order.indexOrders");
+    public function index() {
+        $orders = \App\Order::all();
+        
+        $estados = $orders->groupBy("estado");
+        return view("order.indexOrders", compact("orders", "estados"));
+    }
+
+    public function home($id) {
+        $order = \App\Order::find($id);
+        $order->enviar = true;
+        return view("index");
     }
 
     /**
@@ -21,8 +29,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -32,8 +39,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -43,8 +49,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -54,9 +59,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        
+        echo "editando";
     }
 
     /**
@@ -66,8 +71,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -77,8 +81,8 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }
