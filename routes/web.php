@@ -35,15 +35,9 @@ Route::group(['middleware' => 'role', 'prefix' => 'admin'], function () {
     Route::resource('table', 'TableController');
 //    Route::get('order/home', 'OrderController@home');
 
-    Route::resource('order', 'OrderController', ['except' => [
-            'create', 'store', 'update', 'destroy'
-    ]]);
+    Route::resource('order', 'OrderController');
 
-    Route::get('/home/home/{$id}', function ($id) {
-
-        echo " domicilio";
-    })->name("home");
-
+    
 //    Route::resource('admin', 'AdminController');
 //    Route::resource('photo', 'PhotoController', ['only' => [
 //    'index', 'show'

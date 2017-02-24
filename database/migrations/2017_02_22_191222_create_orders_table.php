@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration {
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             $table->integer('cantidad');
-            $table->enum('estado',['pagado','preparando','listo','enviado']); 
+            $table->enum('estado',['pagado', 'preparando', 'listo', 'despachado']); 
+            $table->boolean('enviar'); 
             
         });
     }

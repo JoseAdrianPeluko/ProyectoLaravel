@@ -61,7 +61,7 @@ echo json_encode([
                             <li><a href="#">Orders</a></li>
                             @endif
                             @if(Auth::check() && Auth::user()->role->role=="empleado")
-                            <li><a href="#">Orders</a></li>
+                            <li><a href="/admin/order">Orders</a></li>
                             @endif
                             <li><a href="#" class="glyphicon glyphicon-shopping-cart"> <span class="badge">4</span></a></li>
 
@@ -83,10 +83,10 @@ echo json_encode([
                                     <li>
                                         @if ( Auth::user()->order_id )
 
-                                        @if ( Auth::user()->order_table )
+                                        @if ( Auth::user()->table_id )
 
                                         @else
-                                        <a href="{{ route("table.cre                                        ate")}}" class="glyphicon glyphicon-king"> Reservar Mesa</a>
+                                        <a href="{{ route("table.create")}}" class="glyphicon glyphicon-king"> Reservar Mesa</a>
 
                                         <a href="{{ route("home",Auth::user()->order_id) }}" class="glyphicon glyphicon-home"> A Domicilio</a>
                                         @endif

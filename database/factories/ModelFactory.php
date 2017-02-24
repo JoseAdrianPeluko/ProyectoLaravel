@@ -44,8 +44,10 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
     return [
         'product_id' => $faker->numberBetween(1, 30),
         'cantidad' => $faker->numberBetween(1, 5),
-        'estado' => $faker->randomElement(['pagado', 'preparando', 'listo', 'enviado']),
+        'estado' => $faker->randomElement(['pagado', 'preparando', 'listo', 'despachado']),
+        'enviar' => $faker->randomElement([1,0]),
     ];
+    //                              cuando check carrito, pasas a cocina, terminado, domicilo o local
 });
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
 
