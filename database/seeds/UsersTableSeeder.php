@@ -19,6 +19,15 @@ class UsersTableSeeder extends Seeder {
             'address' => "C/ Ermita los Remedios Nº7",
         ]);
         DB::table('users')->insert([
+            'name' => "Carlos",
+            'email' => 'dwes@iescierva.net@gmail.com',
+            'role' => "admin",
+            'password' => bcrypt('123456'),
+            'address' => "Instituto IES Cierva",
+        ]);
+        
+   
+        DB::table('users')->insert([
             'name' => "Rebeca",
             'email' => 'rebeca@gmail.com',
             'role' => "empleado",

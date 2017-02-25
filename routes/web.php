@@ -13,6 +13,10 @@
 
 Auth::routes();
 
+Route::get("/doc", function (){
+      return view("doc");
+});
+
 Route::get('/{scope?}', function ($scope = "") {
 
     $products = \App\Product::orderBy("categoria")->get();
@@ -46,7 +50,7 @@ Route::get('order/edit/{$estado}/{$id}', 'OrderController@edit');
     
         Route::get('order/edit/{estado}/{id}', 'OrderController@edit');
 
-
+Route::resource('product', 'ProductController');
 
 //    Route::resource('admin', 'AdminController');
 //    Route::resource('photo', 'PhotoController', ['only' => [

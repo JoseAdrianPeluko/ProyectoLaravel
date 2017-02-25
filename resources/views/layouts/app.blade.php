@@ -56,9 +56,9 @@ echo json_encode([
 
                             @if (Auth::check() && Auth::user()->role=="admin")
                             <li><a href="#">Users</a></li>
-                            <li><a href="/admin/table">Tables</a></li>
-                            <li><a href="admin/product">Products</a></li>
-                            <li><a href="/admin/order">Orders</a></li>
+                            <li><a href="{{ route("table.index")}}">Tables</a></li>
+                            <li><a href="{{ route("product.index")}}">Products</a></li>
+                            <li><a href="{{ route("order.index")}}">Orders</a></li>
                             @endif
                             @if(Auth::check() && Auth::user()->role=="empleado")
                             <li><a href="/admin/order">Orders</a></li>
@@ -88,17 +88,17 @@ echo json_encode([
                                     <li role="separator" class="divider"></li>
                                     <li class="text-center bg-danger">{{Auth::user()->order->product->pvp}}€</li>
                                     <li role="separator" class="divider"></li>
-                                    
+
                                     @if(Auth::user()->order->estado=="listo")
-                                    
+
                                     @if(Auth::user()->table!=null )
-                                     <li>Tiene reservada la mesa {{Auth::user()->table->id}}</li>
+                                    <li>Tiene reservada la mesa {{Auth::user()->table->id}}</li>
                                     @elseif(Auth::user()->order->enviar==1)
                                     <li class="text-center text-success text-uppercase">
                                         El pedido se ha enviado a su domicilio
                                     </li>
                                     @endif
-                                    
+
                                     @endif
 
                                 </ul>
@@ -133,7 +133,7 @@ echo json_encode([
                                         @endif
                                         <a href="{{ url('/logout') }}" class="glyphicon glyphicon-off"
                                            onclick="event.preventDefault();
-                                                                   document.getElementById('logout-form').submit();">
+                                                   document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
@@ -156,11 +156,11 @@ echo json_encode([
             @yield('content')
         </div>
         <footer class="container-fluid text-center col-sm-12">
-            <p>Online Store Copyright</p>  
-            <form class="form-inline">Get deals:
-                <input type="email" class="form-control" size="50" placeholder="Email Address">
-                <button type="button" class="btn btn-danger">Sign Up</button>
-            </form>
+
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="/doc">DOC</a></li>
+                <li role="presentation"><a>Realizado por Jose Adrian Alumno22</a></li>
+            </ul>
         </footer>
         @yield('scripts')
         <!-- Scripts -->
