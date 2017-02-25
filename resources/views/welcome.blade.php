@@ -168,6 +168,7 @@
     <br>
     </aside>-->
 
+<!--if y hacer algo con java script-->
 <article class="container-fluid">
 
     <aside class="col-sm-3 sidenav hidden-xs">
@@ -189,16 +190,25 @@
 
 
 
-    <div class="col-sm-3 text-center text-uppercase">
+    <form  class="col-sm-3 text-center text-uppercase" method="get" action="{{route("order.show",$product->id)}}">
         <div class="panel panel-info">
             <div class="panel-heading">{{$product->name}}</div>
             <div class="panel-body">
                 <img src="{{$product->foto}}" 
-                     class="img-responsive" style=" height: 150px;width:100% " alt="Image"></div>
-            <div class="panel-footer text-warning">{{$product->pvp}}€</div>
+                     class="img-responsive" style=" height: 150px;width:100% " alt="Image">
+
+            </div>
+            <div class="panel-footer text-warning big">{{$product->pvp  }}€          
+                <input class="text-center" type="number" name="quantity" min="1" max="5" value="1" style="margin-left: 10px; margin-right: 10px">
+                unidad
+                @if(Auth::check() &&  Auth::user()->order==null)
+                <input type="submit" class="pull-right btn-success" value="COMPRAR">
+                @endif
+                
+            </div>
         </div>
-    </div>
-    
+    </form>
+
     @endforeach
 </article>
 

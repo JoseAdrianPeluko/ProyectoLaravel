@@ -36,9 +36,16 @@ Route::get('/{scope?}', function ($scope = "") {
 Route::group(['middleware' => 'role', 'prefix' => 'admin'], function () {
 
     Route::resource('table', 'TableController');
-    Route::get('order/home{id}', 'OrderController@home')->name("order.home");
+ 
+    Route::get('order/home', 'OrderController@home')->name("order.home");
+    
+Route::get('order/edit/{$estado}/{$id}', 'OrderController@edit');
 
-    Route::resource('order', 'OrderController');
+    Route::resource('order', 'OrderController', ['except' => [
+    'edit']]);
+    
+        Route::get('order/edit/{estado}/{id}', 'OrderController@edit');
+
 
 
 //    Route::resource('admin', 'AdminController');

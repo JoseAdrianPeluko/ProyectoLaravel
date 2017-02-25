@@ -63,11 +63,49 @@ echo json_encode([
                             @if(Auth::check() && Auth::user()->role=="empleado")
                             <li><a href="/admin/order">Orders</a></li>
                             @endif
-                            <li><a href="#" class="glyphicon glyphicon-shopping-cart"> <span class="badge">4</span></a></li>
+
+<!--                            <li><a href="#" class="glyphicon glyphicon-shopping-cart"> <span class="badge">4</span></a></li>-->
 
                         </ul>
+
+
+
                         <!-- Right Side Of Navbar -->
                         <ul class="nav navbar-nav navbar-right">
+
+                            @if(Auth::check() && Auth::user()->order!=null )
+                            <!--  carrito-->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle glyphicon glyphicon-shopping-cart" 
+                                   data-toggle="dropdown"><span class="badge">{{Auth::user()->order->estado}}</span></a>
+                                <ul class="dropdown-menu">
+
+
+                                    <li><img src="{{Auth::user()->order->product->foto}}" class="img-responsive" style=" 
+                                             height: 50px;width:100%" alt="Image">               
+                                    </li>
+
+                                    <li role="separator" class="divider"></li>
+                                    <li class="text-center bg-danger">{{Auth::user()->order->product->pvp}}€</li>
+                                    <li role="separator" class="divider"></li>
+                                    
+                                    @if(Auth::user()->order->estado=="listo")
+                                    
+                                    @if(Auth::user()->table!=null )
+                                     <li>Tiene reservada la mesa {{Auth::user()->table->id}}</li>
+                                    @elseif(Auth::user()->order->enviar==1)
+                                    <li class="text-center text-success text-uppercase">
+                                        El pedido se ha enviado a su domicilio
+                                    </li>
+                                    @endif
+                                    
+                                    @endif
+
+                                </ul>
+                            </li>
+                            @endif
+
+
                             <!-- Authentication Links -->
                             @if (Auth::guest())
                             <li><a href="{{ url('/login') }}" class="glyphicon glyphicon-user">Login</a></li>
@@ -86,7 +124,7 @@ echo json_encode([
                                         @if ( Auth::user()->table==null && Auth::user()->order->enviar==0   )
                                         <a href="{{ route("table.create")}}" class="glyphicon glyphicon-king"> Reservar Mesa</a>
 
-                                        <a href="{{ route("order.home",Auth::user()->order->id) }}" class="glyphicon glyphicon-home"> A Domicilio</a>
+                                        <a href="{{ route("order.home") }}" class="glyphicon glyphicon-home"> A Domicilio</a>
                                         @else
 
 
@@ -95,7 +133,7 @@ echo json_encode([
                                         @endif
                                         <a href="{{ url('/logout') }}" class="glyphicon glyphicon-off"
                                            onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
+                                                                   document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 

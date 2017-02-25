@@ -18,10 +18,20 @@ class OrderController extends Controller {
         return view("order.indexOrders", compact("orders", "estados"));
     }
 
-    public function home($id) {
-        $order = \App\Order::find($id);
+    public function home() {
+        
+//        $order = \App\Order::find($id);
+//        $order->enviar = true;
+//        $order->save();
+        
+        $order =  \Auth::user()->order;
         $order->enviar = true;
-        return view("index");
+        $order->estado= "preparando";
+        $order->save();
+        
+       
+        
+       return redirect()->route("index");
     }
 
     /**
@@ -31,6 +41,9 @@ class OrderController extends Controller {
      */
     public function create() {
         //
+        
+        
+        
     }
 
     /**
@@ -49,8 +62,20 @@ class OrderController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        //
+    public function show(Request $request, $id) {
+        
+        $order = new \App\Order();
+        $order->product_id = $id;
+        $order->user_id = \Auth::user()->id;
+        $order->cantidad = $request->input("quantity");
+        $order->enviar = false;
+        
+        $order->save();
+        
+      
+        return redirect()->route("index");
+        
+        
     }
 
     /**
@@ -59,9 +84,13 @@ class OrderController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($estado,$id) {
         
-        echo "editando";
+        $order = \App\Order::find($id);
+        $order->estado = $estado;
+        $order->save();
+        
+         return redirect()->route("order.index");
     }
 
     /**

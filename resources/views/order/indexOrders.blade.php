@@ -40,8 +40,11 @@
 
 
 
-                    <td class="text-center"><select id="mySelect" class="badge" onchange="myFunction()">
-
+                    <td class="text-center"><select id="mySelect{{$order->id}}"
+                                                    class="badge" onclick="myFunction({{$order->id}})">
+                            
+                        
+                            
                             @foreach( $estados as $estado )
 
                             <option>{{$estado[0]["estado"]}}</option>
@@ -66,17 +69,14 @@
 
     @section('scripts')
     <script>
-        function myFunction() {
+        function myFunction(id) {
             
             if (confirm("Desea confirmar el cambio del estado?")) {
 //                 alert(document.getElementById("mySelect").value);
-                 window.open("/admin/order/"+document.getElementById("mySelect").value+"/edit");
-                 
-
+                 window.location.replace("/admin/order/edit/"
+                         +document.getElementById("mySelect"+id).value
+                         +"/"+id);
             }
-            
-           
-
         }
     </script>
     @endsection
